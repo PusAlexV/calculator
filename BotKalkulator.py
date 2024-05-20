@@ -23,7 +23,7 @@ def keyboard():
     aPlus = telebot.types.InlineKeyboardButton(text="➕", callback_data="+")
     aRovno = telebot.types.InlineKeyboardButton(text="🟰", callback_data="=")
     aTCHK = telebot.types.InlineKeyboardButton(text=".", callback_data=".")
-    aX = telebot.types.InlineKeyboardButton(text="✖️", callback_data="x")
+    aX = telebot.types.InlineKeyboardButton(text="✖️", callback_data="*")
     aDELIT = telebot.types.InlineKeyboardButton(text="➗", callback_data="/")
     aSBROS = telebot.types.InlineKeyboardButton(text="сброс 🔄", callback_data="сброс 🔄")
     kb.add(a1, a2, a3, a4, a5, a6, a7, a8, a9, a0, a00, aDel, aPlus, aMinus, aRovno, aTCHK, aDELIT, aX, aSBROS)
@@ -49,50 +49,10 @@ def startmsg(msg):
 def callback_worker(call):
     global main
     main = call.message
-    if call.data == "1":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "1")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "2":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "2")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "3":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "3")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "4":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "4")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "5":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "5")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "6":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "6")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "7":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "7")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "8":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "8")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "9":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "9")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "0":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "0")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "x":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "*")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "00":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "00")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "/":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "/")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "-":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "-")
-        bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
-    if call.data == "+":
-        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text + "+")
+    if call.data == "1" or call.data == "2" or call.data == "3" or call.data == "4" or call.data == "5" or \
+            call.data == "6" or call.data == "7" or call.data == "8" or call.data == "9" or call.data == "0" or \
+            call.data == "*" or call.data == "00" or call.data == "/" or call.data == "-" or call.data == "+":
+        bot.edit_message_text(message_id=main.id, chat_id=call.message.chat.id, text=main.text  +call.data)
         bot.edit_message_reply_markup(message_id=main.id, chat_id=call.message.chat.id, reply_markup=keyboard())
     if call.data == "=":
         rez = str(eval(main.text[17:]))
